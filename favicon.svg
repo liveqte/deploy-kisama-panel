@@ -1,13 +1,17 @@
-<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="100" cy="100" r="90" fill="#007A85" />
-  <path d="M70 60V140M70 100L110 60M95 105L130 140M130 140H110M130 140V120" 
-        stroke="white" 
-        stroke-width="12" 
-        stroke-linecap="round" 
-        stroke-linejoin="round" 
-        fill="none"/>
-  <path d="M115 125L135 145L155 125" 
-        fill="none" 
-        stroke="white" 
-        stroke-width="0"/> 
+<svg xmlns="http://www.w3.org/2000/svg" width="425" height="356" viewBox="-212.5 -178 425 356" role="img" aria-label="KISAMA">
+  <defs>
+    <linearGradient id="ink" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#25d8f0"/>
+      <stop offset="1" stop-color="#f218b4"/>
+    </linearGradient>
+  </defs>
+
+  <!-- K：白色纯色包裹 + 渐变填充；viewBox 紧贴字形裁剪，画布尺寸即视觉尺寸，方便页面排版对齐 -->
+  <g transform="skewX(-8)"
+     font-family="'Arial Black','Segoe UI Black',sans-serif"
+     font-weight="900" text-anchor="middle">
+    <!-- 包裹用中间调石板色：白底上可见、黑底上也可见，两种模式都不产生"缩一圈"错觉 -->
+    <text x="0" y="150" font-size="420" fill="none" stroke="#8fa3bd" stroke-width="56" stroke-linejoin="round">K</text>
+    <text x="0" y="150" font-size="420" fill="url(#ink)">K</text>
+  </g>
 </svg>
