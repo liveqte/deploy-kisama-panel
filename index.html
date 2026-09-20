@@ -3,15 +3,33 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- 💡 异步加载字体：media="print" 技巧使其不阻塞首屏渲染（弱网/字体站不可达时不再白屏等待），
+         加载完成后切回 all 生效；noscript 兜底禁 JS 环境仍可获取 -->
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap"></noscript>
     
     <title>Kisama</title>
-    <script type="module" crossorigin src="/assets/index-8irmVqhu.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-ChFPwMSZ.css">
+    <!-- 🌓 首屏防闪烁：Vue 挂载前先按持久化档位写入 data-theme（auto/无值按夜间时段 18:00–06:00 判定，常量与 src/lib/theme.ts 保持一致） -->
+    <script>
+      (function () {
+        try {
+          var m = localStorage.getItem('kisama_theme');
+          var h = new Date().getHours();
+          var dark = m === 'dark' || ((m === 'auto' || !m) && (h >= 18 || h < 6));
+          document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+        } catch (e) { /* localStorage 不可用时保持默认浅色 */ }
+      })();
+    </script>
+    <script type="module" crossorigin src="/assets/index-BcvfWsKo.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/rolldown-runtime-CfSZB2vO.js">
+    <link rel="modulepreload" crossorigin href="/assets/_plugin-vue_export-helper-BNc0dYJo.js">
+    <link rel="modulepreload" crossorigin href="/assets/b64-CFTb66x5.js">
+    <link rel="modulepreload" crossorigin href="/assets/agent-client-BGV9SDhh.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-dF4kkeFP.css">
   </head>
   <body>
     <div id="app"></div>
